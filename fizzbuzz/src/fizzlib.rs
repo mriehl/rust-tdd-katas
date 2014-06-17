@@ -1,5 +1,3 @@
-mod fizzbuzz  {
-
 pub fn fizzbuzz(number: int) -> ~str {
     if number % 15 == 0 {
         ~"fizzbuzz"
@@ -45,6 +43,4 @@ fn fizzbuzz_test_10() {
 #[test]
 fn fizzbuzz_test_15() {
     assert!(fizzbuzz(15) == ~"fizzbuzz");
-}
-
 }
