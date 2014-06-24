@@ -1,1 +1,1 @@
-mod fizzlib;
+mod fizzbuzz;

@@ -1,4 +1,4 @@
-mod fizzlib;
+mod fizzbuzz;
 
 #[test]
 fn fizzbuzz_test_1() {

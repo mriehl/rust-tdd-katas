@@ -11,7 +11,6 @@ pub fn fizzbuzz(number: int) -> ~str {
     else {
         number.to_str()
     }
-
 }
 
 #[test]
@@ -38,7 +37,6 @@ fn fizzbuzz_test_7() {
 fn fizzbuzz_test_10() {
     assert!(fizzbuzz(10) == ~"buzz");
 }
-
 
 #[test]
 fn fizzbuzz_test_15() {
