@@ -1,4 +1,4 @@
 project('fizzbuzz', 'rust')
 
-e = executable('fizzbuzz', 'fizzbuzz.rs', install : false)
-test('test_fizzlib.rs', e)
+test_executable = executable('fizzbuzz', 'fizzbuzz.rs', install : false)
+test('fizzbuzz.rs', test_executable)

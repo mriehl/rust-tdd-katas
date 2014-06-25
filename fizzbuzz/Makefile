@@ -1,10 +1,10 @@
-all: test
+all: clean test
 
-src/test_fizzbuzz.out: src/test_fizzbuzz.rs
-	rustc --test src/test_fizzbuzz.rs -o src/test_fizzbuzz.out
+src/fizzbuzz.out: src/fizzbuzz.rs
+	rustc --test src/fizzbuzz.rs -o src/fizzbuzz.out
 
-test: src/test_fizzbuzz.out
-	./src/test_fizzbuzz.out
+test: src/fizzbuzz.out
+	./src/fizzbuzz.out
 
 clean:
-	rm -f src/test_fizzbuzz.out
+	rm -f src/fizzbuzz.out
