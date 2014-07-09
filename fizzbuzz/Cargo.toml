@@ -1,0 +1,10 @@
+[package]
+
+name = "fizzbuzz"
+version = "0.0.1"
+authors = [ "max@riehl.io" ]
+
+[[bin]]
+
+name = "fizzbuzz" # the name of the executable to generate
+
