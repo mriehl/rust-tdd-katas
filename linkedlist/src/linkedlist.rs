@@ -21,7 +21,7 @@ mod linkedlist{
         }
     }
 
-    pub fn _repr_inner(list: &List) -> String{
+    fn _repr_inner(list: &List) -> String{
         match list{
             &Nil => String::from_str("]>"),
             &Cons(number, box ref tail) if match tail{
