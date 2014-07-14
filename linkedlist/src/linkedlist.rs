@@ -27,8 +27,8 @@ mod linkedlist{
             &Cons(number, box ref tail) if match tail{
                 &Nil => true,
                 _ => false,
-            }=> number.to_str().append("]>"),
-            &Cons(number, box ref tail) => number.to_str().append(", ").append(_repr_inner(tail).as_slice())
+            }=> number.to_string().append("]>"),
+            &Cons(number, box ref tail) => number.to_string().append(", ").append(_repr_inner(tail).as_slice())
         }
     }
 
