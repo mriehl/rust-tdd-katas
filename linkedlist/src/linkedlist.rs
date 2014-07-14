@@ -1,3 +1,7 @@
+#![desc = "A linked list kata in rust"]
+#![license = "public domain"]
+
+#[cfg(test)]
 mod linkedlist_test;
 mod linkedlist{
 
