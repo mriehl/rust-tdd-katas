@@ -11,6 +11,6 @@ pub fn fizzbuzz(number: &int) -> String{
         String::from_str("buzz")
     }
     else {
-        number.to_str()
+        number.to_string()
     }
 }
