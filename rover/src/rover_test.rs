@@ -108,5 +108,32 @@ fn should_not_overflow_default_world_while_moving_north(){
     let mut r = rover::new();
     r.move(rover::XDelta(150));
 
-    assert_eq!(r.position, Position2D{x: 50, y: 0})
+    assert_eq!(r.position, Position2D{x: 49, y: 0})
+}
+
+#[test]
+fn should_not_overflow_default_world_while_moving_east(){
+    let mut r = rover::new();
+    r.move(rover::YDelta(150));
+
+    assert_eq!(r.position, Position2D{x: 0, y: 49})
+}
+
+#[test]
+fn should_not_overflow_both_coordinates(){
+    let mut r = rover::new();
+    r.move(rover::Vector(1338, 143));
+
+    assert_eq!(r.position, Position2D{x: 37, y: 42})
+}
+
+#[test]
+fn should_not_overflow_while_advancing(){
+    let mut r = rover::new();
+    r.move(rover::YDelta(100));
+    assert_eq!(r.position, Position2D{x: 0, y: 100})
+
+    r.advance();
+
+    assert_eq!(r.position, Position2D{x: 0, y: 0})
 }
