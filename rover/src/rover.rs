@@ -1,5 +1,7 @@
 #![desc = "A mars rover kata in rust"]
 #![license = "public domain"]
+#![feature(phase)]
+#[cfg(test)] #[phase(plugin,link)] extern crate shiny;
 
 extern crate core;
 extern crate collections;
