@@ -64,3 +64,10 @@ fn should_move_west_twice(){
     r.move(rover::XDelta(-2));
     assert_eq!(r.position, Position2D{x: -2, y: 0})
 }
+
+#[test]
+fn should_move_by_position(){
+    let mut r = rover::new();
+    r.move(rover::Vector(2, 3));
+    assert_eq!(r.position, Position2D{x: 2, y: 3})
+}

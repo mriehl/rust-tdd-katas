@@ -16,7 +16,7 @@ mod rover{
     }
 
     pub enum Delta{
-        Position2D,
+        Vector(int, int),
         XDelta(int),
         YDelta(int),
     }
@@ -30,7 +30,7 @@ mod rover{
             let new_position = match delta{
                 YDelta(y) => Position2D{x: self.position.x, y: self.position.y + y},
                 XDelta(x) => Position2D{x: self.position.x + x, y: self.position.y},
-                _ => self.position
+                Vector(x, y) => Position2D{x: self.position.x + x, y: self.position.y + y},
             };
             self.position = new_position;
         }
