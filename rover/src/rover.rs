@@ -4,6 +4,7 @@
 extern crate core;
 
 mod coords;
+mod world;
 
 #[cfg(test)]
 mod rover_test;
