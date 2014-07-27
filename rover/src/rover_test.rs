@@ -66,7 +66,7 @@ fn should_move_west_twice(){
 }
 
 #[test]
-fn should_move_by_position(){
+fn should_move_by_vector(){
     let mut r = rover::new();
     r.move(rover::Vector(2, 3));
     assert_eq!(r.position, Position2D{x: 2, y: 3})
