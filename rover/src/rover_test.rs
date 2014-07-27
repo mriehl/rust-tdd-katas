@@ -71,3 +71,34 @@ fn should_move_by_vector(){
     r.move(rover::Vector(2, 3));
     assert_eq!(r.position, Position2D{x: 2, y: 3})
 }
+
+#[test]
+fn should_advance_north(){
+    let mut r = rover::new();
+    r.advance();
+    assert_eq!(r.position, Position2D{x: 0, y: 1})
+}
+
+#[test]
+fn should_advance_east(){
+    let mut r = rover::new();
+    r.facing = rover::East;
+    r.advance();
+    assert_eq!(r.position, Position2D{x: 1, y: 0})
+}
+
+#[test]
+fn should_advance_south(){
+    let mut r = rover::new();
+    r.facing = rover::South;
+    r.advance();
+    assert_eq!(r.position, Position2D{x: 0, y: -1})
+}
+
+#[test]
+fn should_advance_west(){
+    let mut r = rover::new();
+    r.facing = rover::West;
+    r.advance();
+    assert_eq!(r.position, Position2D{x: -1, y: 0})
+}

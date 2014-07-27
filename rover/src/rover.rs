@@ -12,7 +12,7 @@ mod rover{
     use coords::Position2D;
 
     pub fn new() -> Rover{
-        Rover{position: Position2D{x: 0, y: 0}}
+        Rover{position: Position2D{x: 0, y: 0}, facing: North}
     }
 
     pub enum Delta{
@@ -21,8 +21,16 @@ mod rover{
         YDelta(int),
     }
 
+    pub enum Orientation{
+        North,
+        South,
+        East,
+        West,
+    }
+
     pub struct Rover{
         pub position: Position2D,
+        pub facing: Orientation,
     }
 
     impl Rover{
@@ -33,6 +41,16 @@ mod rover{
                 Vector(x, y) => Position2D{x: self.position.x + x, y: self.position.y + y},
             };
             self.position = new_position;
+        }
+
+        pub fn advance(&mut self){
+            let (dx, dy) = match self.facing{
+                North => (0, 1),
+                South => (0, -1),
+                East => (1, 0),
+                West => (-1, 0),
+            };
+            self.move(Vector(dx, dy))
         }
     }
 }
