@@ -102,3 +102,11 @@ fn should_advance_west(){
     r.advance();
     assert_eq!(r.position, Position2D{x: -1, y: 0})
 }
+
+#[test]
+fn should_not_overflow_default_world_while_moving_north(){
+    let mut r = rover::new();
+    r.move(rover::XDelta(150));
+
+    assert_eq!(r.position, Position2D{x: 50, y: 0})
+}

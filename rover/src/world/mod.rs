@@ -8,19 +8,18 @@ pub struct World{
     pub height: int,
 }
 
+fn overflowed_coord(bound: int, wanted: int) -> int{
+    match (bound, wanted){
+        (bound, lower_eq) if lower_eq <= bound => lower_eq,
+        (bound, higher) => higher % bound,
+    }
+}
+
 impl World{
     pub fn recalculate_position_overflow(&self, pos: &Position2D) -> Position2D{
-        let actual_x = match (self.width, pos.x){
-            (x, y) if x > y => y,
-            (x, y) if x <= y => x,
-            _ => pos.x
-        };
+        let actual_x = overflowed_coord(self.width, pos.x);
 
-        let actual_y = match (self.height, pos.y){
-            (x, y) if x > y => y,
-            (x, y) if x <= y => x,
-            _ => pos.y
-        };
+        let actual_y = overflowed_coord(self.height, pos.y);
         Position2D{x: actual_x, y: actual_y}
     }
 }

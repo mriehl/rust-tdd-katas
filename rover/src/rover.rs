@@ -11,9 +11,14 @@ mod rover_test;
 
 mod rover{
     use coords::Position2D;
+    use world::World;
 
     pub fn new() -> Rover{
-        Rover{position: Position2D{x: 0, y: 0}, facing: North}
+        Rover{
+                position: Position2D{x: 0, y: 0},
+                facing: North,
+                world: World{width: 100, height: 100},
+            }
     }
 
     pub enum Delta{
@@ -32,6 +37,7 @@ mod rover{
     pub struct Rover{
         pub position: Position2D,
         pub facing: Orientation,
+        pub world: World,
     }
 
     impl Rover{
@@ -41,7 +47,7 @@ mod rover{
                 XDelta(x) => Position2D{x: self.position.x + x, y: self.position.y},
                 Vector(x, y) => Position2D{x: self.position.x + x, y: self.position.y + y},
             };
-            self.position = new_position;
+            self.position = self.world.recalculate_position_overflow(&new_position);
         }
 
         pub fn advance(&mut self){
