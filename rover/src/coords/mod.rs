@@ -24,6 +24,6 @@ impl PartialEq for Position2D{
 
 impl Show for Position2D{
     fn fmt(&self, f: &mut Formatter) -> Result {
-        write!(f, "Position ({},{})", self.x, self.y)
+        write!(f, "position ({},{})", self.x, self.y)
     }
 }
