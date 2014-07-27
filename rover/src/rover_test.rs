@@ -137,3 +137,22 @@ fn should_not_overflow_while_advancing(){
 
     assert_eq!(r.position, Position2D{x: 0, y: 0})
 }
+
+#[test]
+fn should_abort_transaction_when_colliding(){
+    let mut r = rover::new();
+    r.world.insert("moon monster", Position2D{x: 5, y: 5});
+    r.move(rover::Vector(5, 5));
+    assert_eq!(r.position, Position2D{x: 0, y: 0})
+}
+
+#[test]
+fn should_abort_last_transaction_when_colliding_in_single_steps(){
+    let mut r = rover::new();
+    r.world.insert("moon monster", Position2D{x: 5, y: 5});
+    r.move(rover::Vector(5, 4));
+    r.advance();
+
+    assert_eq!(r.position, Position2D{x: 5, y: 4})
+
+}

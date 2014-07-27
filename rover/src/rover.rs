@@ -2,6 +2,7 @@
 #![license = "public domain"]
 
 extern crate core;
+extern crate collections;
 
 mod coords;
 mod world;
@@ -11,13 +12,14 @@ mod rover_test;
 
 mod rover{
     use coords::Position2D;
+    use world;
     use world::World;
 
     pub fn new() -> Rover{
         Rover{
                 position: Position2D{x: 0, y: 0},
                 facing: North,
-                world: World{width: 100, height: 100},
+                world: world::new(100, 100),
             }
     }
 
@@ -47,7 +49,10 @@ mod rover{
                 XDelta(x) => Position2D{x: self.position.x + x, y: self.position.y},
                 Vector(x, y) => Position2D{x: self.position.x + x, y: self.position.y + y},
             };
-            self.position = self.world.recalculate_position_overflow(&new_position);
+            self.position = match self.world.recalculate_position_overflow(&new_position){
+                Some(position) => position,
+                None => self.position,
+            }
         }
 
         pub fn advance(&mut self){
