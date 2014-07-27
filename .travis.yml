@@ -6,7 +6,7 @@ install:
   - (cd rust-nightly-x86_64-unknown-linux-gnu/ && sudo ./install.sh)
   - curl -O http://static.rust-lang.org/cargo-dist/cargo-nightly-linux.tar.gz
   - tar xf cargo-nightly-linux.tar.gz
-  - cd $ROOT
   - sudo ./cargo-nightly/install.sh
+  - cd $ROOT
 script:
   - ./test_all.sh
