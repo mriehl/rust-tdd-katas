@@ -37,3 +37,21 @@ fn prevent_multiple_occupations(){
 
     assert_eq!(actual, None);
 }
+
+#[test]
+fn overflow_width_low(){
+    let w = world::new(5, 5);
+
+    let actual = w.recalculate_position_overflow(&Position2D{x: -1, y: 0});
+
+    assert_eq!(actual, Some(Position2D{x: 4, y: 0}));
+}
+
+#[test]
+fn overflow_height_low(){
+    let w = world::new(5, 5);
+
+    let actual = w.recalculate_position_overflow(&Position2D{x: 0, y: -1});
+
+    assert_eq!(actual, Some(Position2D{x: 0, y: 4}));
+}
