@@ -44,7 +44,7 @@ fn overflow_width_low(){
 
     let actual = w.recalculate_position_overflow(&Position2D{x: -1, y: 0});
 
-    assert_eq!(actual, Some(Position2D{x: 4, y: 0}));
+    assert_eq!(actual, Some(Position2D{x: 5, y: 0}));
 }
 
 #[test]
@@ -53,5 +53,5 @@ fn overflow_height_low(){
 
     let actual = w.recalculate_position_overflow(&Position2D{x: 0, y: -1});
 
-    assert_eq!(actual, Some(Position2D{x: 0, y: 4}));
+    assert_eq!(actual, Some(Position2D{x: 0, y: 5}));
 }

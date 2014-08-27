@@ -34,25 +34,25 @@ describe!(
     it "should move south" {
         let mut r = rover::new();
         r.move(rover::YDelta(-1));
-        assert_eq!(r.position, Position2D{x: 0, y: 99})
+        assert_eq!(r.position, Position2D{x: 0, y: 100})
     }
 
     it "should move south twice" {
         let mut r = rover::new();
         r.move(rover::YDelta(-2));
-        assert_eq!(r.position, Position2D{x: 0, y: 98})
+        assert_eq!(r.position, Position2D{x: 0, y: 99})
     }
 
     it "should move west" {
         let mut r = rover::new();
         r.move(rover::XDelta(-1));
-        assert_eq!(r.position, Position2D{x: 99, y: 0})
+        assert_eq!(r.position, Position2D{x: 100, y: 0})
     }
 
     it "should move west twice" {
         let mut r = rover::new();
         r.move(rover::XDelta(-2));
-        assert_eq!(r.position, Position2D{x: 98, y: 0})
+        assert_eq!(r.position, Position2D{x: 99, y: 0})
     }
 
     it "should move by vector" {
@@ -78,14 +78,14 @@ describe!(
         let mut r = rover::new();
         r.facing = rover::South;
         r.advance();
-        assert_eq!(r.position, Position2D{x: 0, y: 99})
+        assert_eq!(r.position, Position2D{x: 0, y: 100})
     }
 
     it "should advance west" {
         let mut r = rover::new();
         r.facing = rover::West;
         r.advance();
-        assert_eq!(r.position, Position2D{x: 99, y: 0})
+        assert_eq!(r.position, Position2D{x: 100, y: 0})
     }
 
     it "should not overflow default world while moving east" {
@@ -108,7 +108,7 @@ describe!(
         r.advance();
         r.advance();
 
-        assert_eq!(r.position, Position2D{x: 98, y: 0})
+        assert_eq!(r.position, Position2D{x: 99, y: 0})
     }
 
     it "should not overflow both coordinates" {

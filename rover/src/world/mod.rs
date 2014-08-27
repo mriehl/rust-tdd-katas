@@ -12,7 +12,7 @@ pub struct World{
 
 fn overflowed_coord(bound: int, wanted: int) -> int{
     match (bound, wanted){
-        (bound, negative) if negative < 0 => bound + negative,
+        (bound, negative) if negative < 0 => bound + negative + 1,
         (bound, lower_eq) if lower_eq <= bound => lower_eq,
         (bound, higher) => higher % bound - 1,
     }
