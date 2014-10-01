@@ -45,7 +45,7 @@ mod rover{
     }
 
     impl Rover{
-        pub fn move(&mut self, delta: Delta){
+        pub fn move_(&mut self, delta: Delta){
             let new_position = match delta{
                 YDelta(y) => Position2D{x: self.position.x, y: self.position.y + y},
                 XDelta(x) => Position2D{x: self.position.x + x, y: self.position.y},
@@ -64,7 +64,7 @@ mod rover{
                 East => (1, 0),
                 West => (-1, 0),
             };
-            self.move(Vector(dx, dy))
+            self.move_(Vector(dx, dy))
         }
     }
 }
