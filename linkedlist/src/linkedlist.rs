@@ -21,7 +21,11 @@ mod linkedlist{
     pub fn repr(list: &List) -> String{
         match list{
             &Nil => String::from_str("<[]>"),
-            &Cons(_, _) => String::from_str("<[").append(_repr_inner(list).as_slice())
+            &Cons(_, _) => {
+                let mut nested_repr = String::from_str("<[");
+                nested_repr.push_str(_repr_inner(list).as_slice());
+                nested_repr
+            }
         }
     }
 
@@ -31,8 +35,17 @@ mod linkedlist{
             &Cons(number, box ref tail) if match tail{
                 &Nil => true,
                 _ => false,
-            }=> number.to_string().append("]>"),
-            &Cons(number, box ref tail) => number.to_string().append(", ").append(_repr_inner(tail).as_slice())
+            }=> {
+                let mut tail_repr = number.to_string();
+                tail_repr.push_str("]>");
+                tail_repr
+            }
+            &Cons(number, box ref tail) => {
+                let mut loose_tail = number.to_string();
+                loose_tail.push_str(", ");
+                loose_tail.push_str(_repr_inner(tail).as_slice());
+                loose_tail
+            }
         }
     }
 
