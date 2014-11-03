@@ -4,5 +4,5 @@ set -e
 
 for kata in $(ls); do
     [[ ! -d $kata ]] && continue; 
-    (cd $kata && cargo test);
+    (cd $kata && cargo update && cargo test);
 done
