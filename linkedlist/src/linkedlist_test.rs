@@ -1,5 +1,5 @@
-use linkedlist::Nil;
-use linkedlist::Cons;
+use linkedlist::List::Nil;
+use linkedlist::List::Cons;
 use linkedlist::repr;
 use linkedlist::equal;
 use linkedlist::visual_compare;

@@ -20,8 +20,8 @@ mod linkedlist{
 
     pub fn repr(list: &List) -> String{
         match list{
-            &Nil => String::from_str("<[]>"),
-            &Cons(_, _) => {
+            &List::Nil => String::from_str("<[]>"),
+            &List::Cons(_, _) => {
                 let mut nested_repr = String::from_str("<[");
                 nested_repr.push_str(_repr_inner(list).as_slice());
                 nested_repr
@@ -31,16 +31,16 @@ mod linkedlist{
 
     fn _repr_inner(list: &List) -> String{
         match list{
-            &Nil => String::from_str("]>"),
-            &Cons(number, box ref tail) if match tail{
-                &Nil => true,
+            &List::Nil => String::from_str("]>"),
+            &List::Cons(number, box ref tail) if match tail{
+                &List::Nil => true,
                 _ => false,
             }=> {
                 let mut tail_repr = number.to_string();
                 tail_repr.push_str("]>");
                 tail_repr
             }
-            &Cons(number, box ref tail) => {
+            &List::Cons(number, box ref tail) => {
                 let mut loose_tail = number.to_string();
                 loose_tail.push_str(", ");
                 loose_tail.push_str(_repr_inner(tail).as_slice());
@@ -51,8 +51,8 @@ mod linkedlist{
 
     pub fn equal(l1: &List, l2: &List) -> bool{
         match (l1, l2){
-            (&Nil, &Nil) => true,
-            (&Cons(n1, box ref tail1), &Cons(n2, box ref tail2)) if n1 == n2 => {
+            (&List::Nil, &List::Nil) => true,
+            (&List::Cons(n1, box ref tail1), &List::Cons(n2, box ref tail2)) if n1 == n2 => {
                 equal(tail1, tail2)
             },
             _ => false,
