@@ -1,5 +1,5 @@
 use coords::Position2D;
-use std::collections::hashmap::HashMap;
+use std::collections::HashMap;
 
 #[cfg(test)]
 mod world_test;

@@ -20,7 +20,7 @@ mod rover{
     pub fn new() -> Rover{
         Rover{
                 position: Position2D{x: 0, y: 0},
-                facing: North,
+                facing: Orientation::North,
                 world: world::new(100, 100),
             }
     }
@@ -47,9 +47,9 @@ mod rover{
     impl Rover{
         pub fn move_(&mut self, delta: Delta){
             let new_position = match delta{
-                YDelta(y) => Position2D{x: self.position.x, y: self.position.y + y},
-                XDelta(x) => Position2D{x: self.position.x + x, y: self.position.y},
-                Vector(x, y) => Position2D{x: self.position.x + x, y: self.position.y + y},
+                Delta::YDelta(y) => Position2D{x: self.position.x, y: self.position.y + y},
+                Delta::XDelta(x) => Position2D{x: self.position.x + x, y: self.position.y},
+                Delta::Vector(x, y) => Position2D{x: self.position.x + x, y: self.position.y + y},
             };
             self.position = match self.world.recalculate_position_overflow(&new_position){
                 Some(position) => position,
@@ -59,12 +59,12 @@ mod rover{
 
         pub fn advance(&mut self){
             let (dx, dy) = match self.facing{
-                North => (0, 1),
-                South => (0, -1),
-                East => (1, 0),
-                West => (-1, 0),
+                Orientation::North => (0, 1),
+                Orientation::South => (0, -1),
+                Orientation::East => (1, 0),
+                Orientation::West => (-1, 0),
             };
-            self.move_(Vector(dx, dy))
+            self.move_(Delta::Vector(dx, dy))
         }
     }
 }
