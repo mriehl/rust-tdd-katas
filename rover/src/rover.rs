@@ -53,7 +53,7 @@ mod rover{
             };
             self.position = match self.world.recalculate_position_overflow(&new_position){
                 Some(position) => position,
-                None => self.position,
+                None => self.position.clone(),
             }
         }
 

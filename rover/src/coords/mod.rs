@@ -8,6 +8,7 @@ use std::fmt::Result;
 #[cfg(test)]
 mod coords_test;
 
+#[deriving(Clone)]
 pub struct Position2D{
     pub x: int,
     pub y: int,
