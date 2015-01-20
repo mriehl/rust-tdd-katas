@@ -1,5 +1,6 @@
 #![desc = "A linked list kata in rust"]
 #![license = "public domain"]
+#![feature(box_syntax)]
 
 #[cfg(test)]
 mod linkedlist_test;
